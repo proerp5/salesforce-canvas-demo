@@ -19,7 +19,7 @@ app.post('/signedrequest', function(req, res) {
         context = signedRequest.context,
         oauthToken = signedRequest.client.oauthToken,
         instanceUrl = signedRequest.client.instanceUrl,
-
+    
         query = "SELECT Id, FirstName, LastName, Phone, Email FROM Contact WHERE Id = '" + context.environment.record.Id + "'",
 
         contactRequest = {
@@ -38,7 +38,8 @@ app.post('/signedrequest', function(req, res) {
         var imgTag = qr.createImgTag(4);
         res.render('index', {context: context, imgTag: imgTag});
     });
-
+console.log('signedRequest.context.environment.record.Id'+context.environment.record.Id);
+    console.log('signedRequest.query'+query)
 });
 
 app.set('port', process.env.PORT || 5000);
